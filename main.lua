@@ -1,4 +1,4 @@
-push =require('push')
+push =require('Libiary/push')
 Class = require('class')
 require 'Topf'
 require 'constanten'
