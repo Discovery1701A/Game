@@ -5,6 +5,7 @@ require 'Block'
 require 'constanten'
 
 
+
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.window.setTitle('Topfi')
@@ -18,6 +19,12 @@ function love.load()
         ['Topf'] = love.graphics.newImage('Grafiks/Topf.png'),
         ['Stein'] = love.graphics.newImage('Grafiks/Steine.png')
     }
+
+    gSounds = {
+        ['jump'] = love.audio.newSource('Sounds/jump.wav', 'static'),
+        ['collider'] = love.audio.newSource('Sounds/pupupu.wav', 'static')
+    }
+
     topf = Topf()
     block = Block()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {

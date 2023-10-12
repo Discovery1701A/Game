@@ -54,6 +54,7 @@ function Topf:update(dt)
         self.falling = true
     end
     if (love.keyboard.wasPressed('space') or love.keyboard.wasPressed('up') or love.keyboard.wasPressed('w')) and self.jump == false then
+        gSounds['jump']:play()
         self.dy = -5
         self.jump = true
         self.falling = true
@@ -67,14 +68,16 @@ end
 function Topf:collider(object)
     if self.x < object.x + object.width and object.x < self.x + self.width  then
         if self.y < object.y + object.height and object.y < self.y + self.height then
+            self.jump = false
+            gSounds['collider']:play()
             return true
         else
             
-            self.jump = false
+            
             return false
         end
     else
-        self.jump = false
+    
         return false
     end
 
