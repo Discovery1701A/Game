@@ -14,7 +14,8 @@ function love.load()
         ['large'] = love.graphics.newFont('EarthrealmBold-Edmg.ttf', 28)
     }
     gTexture = {
-        ['Topf'] = love.graphics.newImage('Topf.png')
+        ['Topf'] = love.graphics.newImage('Grafiks/Topf.png'),
+        ['Stein'] = love.graphics.newImage('Grafiks/Steine.png')
     }
     topf = Topf()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
