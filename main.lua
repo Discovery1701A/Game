@@ -1,6 +1,7 @@
 push =require('Libiary/push')
 Class = require('class')
 require 'Topf'
+require 'Block'
 require 'constanten'
 
 
@@ -18,6 +19,7 @@ function love.load()
         ['Stein'] = love.graphics.newImage('Grafiks/Steine.png')
     }
     topf = Topf()
+    block = Block()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = true,
@@ -47,11 +49,17 @@ function love.keypressed(key)
 end
 function love.update(dt)
     topf:update(dt)
+    if topf:collider(block) then
+        topf:colliderPositionsAnpassung(block)
+    end
+
 
     love.keyboard.keysPressed = {}
 end
 function love.draw()
     push:apply('start')
+
+    block:render()
     topf:render()
     displayFPS()
     push:apply('end')
@@ -61,4 +69,6 @@ function displayFPS()
     love.graphics.setFont(gFonts['small'])
     love.graphics.setColor(0, 1, 0, 1)
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 5, 5)
+    love.graphics.print('X: ' .. tostring(topf.x), 5, 15)
+    love.graphics.print('Y: ' .. tostring(topf.y), 5, 25)
 end
