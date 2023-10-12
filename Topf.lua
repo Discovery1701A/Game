@@ -49,7 +49,7 @@ function Topf:update(dt)
    else 
         self.dy = self.dy + GRAVATY*dt
     end
-    if love.keyboard.wasPressed('space') and self.jump == false then
+    if (love.keyboard.wasPressed('space') or love.keyboard.wasPressed('up') or love.keyboard.wasPressed('w')) and self.jump == false then
         self.dy = -5
         self.jump = true
     end
