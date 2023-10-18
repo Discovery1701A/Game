@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Neuer Ordner",
+			"path": "../../../Neuer Ordner"
+		}
+	],
+	"settings": {}
+}
