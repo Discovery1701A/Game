@@ -4,9 +4,10 @@ require 'Topf'
 require 'Block'
 require 'constanten'
 
-
+sti = require 'Libiary/sti'
 
 function love.load()
+    gamMap = sti('map/testkarte.lua')
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.window.setTitle('Topfi')
     math.randomseed(os.time())
@@ -65,7 +66,7 @@ function love.update(dt)
 end
 function love.draw()
     push:apply('start')
-
+    gamMap:draw()
     block:render()
     topf:render()
     displayFPS()
@@ -73,6 +74,7 @@ function love.draw()
     
 end
 function displayFPS()
+    
     love.graphics.setFont(gFonts['small'])
     love.graphics.setColor(0, 1, 0, 1)
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 5, 5)

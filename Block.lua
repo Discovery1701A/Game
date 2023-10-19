@@ -4,7 +4,6 @@ function Block:init(x,y)
     self.image = gTexture['Stein']
     self.x = VIRTUAL_WIDTH/2 +75
     self.y =  VIRTUAL_HEIGHT/2 +50
-    self.image:setWidth(16) 
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
     
