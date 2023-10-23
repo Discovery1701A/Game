@@ -3,10 +3,11 @@ Class = require('class')
 require 'Topf'
 require 'Block'
 require 'constanten'
-
+camera = require 'Libiary/camera'
 sti = require 'Libiary/sti'
 
 function love.load()
+    cam = camera()
     gamMap = sti('map/testkarte.lua')
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.window.setTitle('Topfi')
@@ -57,21 +58,27 @@ function love.keypressed(key)
 end
 function love.update(dt)
     topf:update(dt)
-    if topf:collider(block) then
-        topf:colliderPositionsAnpassung(block)
-    end
+    --if topf:collider(block) then
+      --  topf:colliderPositionsAnpassung(block)
+   -- end
 
-
+    cam:lookAt(topf.x*WINDOW_WIDTH*VIRTUAL_WIDTH, topf.y/WINDOW_HEIGHT*VIRTUAL_HEIGHT)
     love.keyboard.keysPressed = {}
 end
 function love.draw()
+   
     push:apply('start')
-    gamMap:draw()
-    block:render()
-    topf:render()
-    displayFPS()
+    cam:attach()
+            gamMap:drawLayer(gamMap.layers['Kachelebene 1'])
+            gamMap:drawLayer(gamMap.layers['Kachelebene 2'])
+            block:render()
+            topf:render()
+           
+            cam:detach()
+        
     push:apply('end')
-    
+   
+    displayFPS()
 end
 function displayFPS()
     
@@ -80,4 +87,5 @@ function displayFPS()
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 5, 5)
     love.graphics.print('X: ' .. tostring(topf.x), 5, 15)
     love.graphics.print('Y: ' .. tostring(topf.y), 5, 25)
+    love.graphics.setColor(1, 1, 1, 1)
 end
