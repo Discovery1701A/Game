@@ -5,7 +5,7 @@ Topf = Class {}
 function Topf:init()
     self.image = gTexture['Topf']
     self.x = 0  -- VIRTUAL_WIDTH / 2 - self.image:getWidth() / 2
-    self.y =1000
+    self.y = 0
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
     self.dx = 0

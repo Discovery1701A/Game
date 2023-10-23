@@ -62,7 +62,7 @@ function love.update(dt)
       --  topf:colliderPositionsAnpassung(block)
    -- end
 
-    cam:lookAt(topf.x*WINDOW_WIDTH*VIRTUAL_WIDTH, topf.y/WINDOW_HEIGHT*VIRTUAL_HEIGHT)
+    cam:lookAt(topf.x+VIRTUAL_WIDTH, topf.y+VIRTUAL_HEIGHT)
     love.keyboard.keysPressed = {}
 end
 function love.draw()
